@@ -1,4 +1,4 @@
-# Craft Ware [Project Repo: project-craft-ware]
+# Craft Ware [repo: project-craft-ware]
 a new e-commerce site on handicrafts and multiple selling items.
 
 ## Description
