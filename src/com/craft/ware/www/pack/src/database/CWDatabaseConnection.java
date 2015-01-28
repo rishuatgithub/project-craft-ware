@@ -20,6 +20,7 @@ public class CWDatabaseConnection {
 	public static boolean getCWdbConnection() throws SQLException{
 		
 		try {
+			
 			Class.forName("org.postgresql.Driver");
 			String url = "jdbc:postgresql://"+DB_HOST+":"+DB_PORT+"/"+DB_NAME;
 			Properties props = new Properties();
