@@ -19,8 +19,8 @@ Password : <input type="password" name="password" id="password"/>
 <input type="button" name="login" value="Login" id="login"/>
 <hr>
 Welcome: <span id="welcome_user"></span>
-
-
+<hr>
+Item Display Section
 
 
 
@@ -38,18 +38,14 @@ $('#login').click(function(){
 	
 	var userName=$('#username').val();
 	var password=$('#password').val();
+	var userLoginServURL="CWUserLoginServlet";
 	
-	var loginParam="username="+userName+"&password="+password;
-	
-	var servURL="CWUserLogin?"+loginParam;
-	
-	$.get(servURL,function(data){
-		//alert("a");
-		//$('#welcome_user').html(data);
+	$.post(userLoginServURL,{username:userName, password:password},function(data){
+		$('#welcome_user').html(data);
 	});
 	
 	
-	//$('#welcome_user').html(loginParam);
+	
 });
 
 </script>

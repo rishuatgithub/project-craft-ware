@@ -6,13 +6,13 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>CWUserLogin</display-name>
-    <servlet-name>CWUserLogin</servlet-name>
-    <servlet-class>com.craft.ware.www.pack.src.controller.CWUserLogin</servlet-class>
+    <display-name>CWUserLoginServlet</display-name>
+    <servlet-name>CWUserLoginServlet</servlet-name>
+    <servlet-class>com.craft.ware.www.pack.src.controller.CWUserLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CWUserLogin</servlet-name>
-    <url-pattern>/CWUserLogin</url-pattern>
+    <servlet-name>CWUserLoginServlet</servlet-name>
+    <url-pattern>/CWUserLoginServlet</url-pattern>
   </servlet-mapping>
   
   

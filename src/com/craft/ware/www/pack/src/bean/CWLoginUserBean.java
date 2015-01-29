@@ -4,6 +4,9 @@ public class CWLoginUserBean {
 	
 	private String userID;
 	private String userPasscode;
+	private int userLoginCount;
+	
+	
 	public String getUserPasscode() {
 		return userPasscode;
 	}
@@ -17,14 +20,23 @@ public class CWLoginUserBean {
 		this.userID = userID;
 	}
 	
-	
-	private String generateUserLoginQuery;
-	
-	public String getGenerateUserLoginQuery() {
-		return generateUserLoginQuery;
+	public String getGetUserLoginQuery() {
+		return getUserLoginQuery;
 	}
-	public void setGenerateUserLoginQuery(String generateUserLoginQuery) {
-		this.generateUserLoginQuery = generateUserLoginQuery;
+	public void setGetUserLoginQuery(String getUserID, String getUserPass) {
+		
+		String getUserLoginQuery="select craftware.cw_usercredential_check('"+getUserID+"','"+getUserPass+"')";
+		
+		this.getUserLoginQuery = getUserLoginQuery;
 	}
+
+	public int getUserLoginCount() {
+		return userLoginCount;
+	}
+	public void setUserLoginCount(int userLoginCount) {
+		this.userLoginCount = userLoginCount;
+	}
+
+	private String getUserLoginQuery;
 
 }
