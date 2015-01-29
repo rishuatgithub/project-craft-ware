@@ -5,7 +5,7 @@ a new e-commerce site on handicrafts and multiple selling items.
 This is an ongoing startup project to build a new e-commerce website for selling items to different customer. Currently the project is in dev.
 
 ## Tools/Language used:
-Eclipse (Luna), Maven, Tomcat 7, Java, J2EE, HTML5, CSS3, JavaScript, JQuery.
+Eclipse (Luna), Maven, Tomcat 7, Java, J2EE, JSP, HTML5, CSS3, JavaScript, JQuery.
 
 
 
