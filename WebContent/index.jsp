@@ -17,8 +17,14 @@ User Login:<br/>
 User Name: <input type="text" name="name" id="username"/>
 Password : <input type="password" name="password" id="password"/>
 <input type="button" name="login" value="Login" id="login"/>
+<a href="#">sign up</a>
+
 <hr>
-Welcome: <span id="welcome_user"></span>
+Welcome: <span id="welcome_user"></span> <br/>
+User Role:<span id="user_role"></span>
+<hr>
+Tab Access Display Section
+<div class="tab_access_display"></div>
 <hr>
 Item Display Section
 
@@ -41,8 +47,14 @@ $('#login').click(function(){
 	var userLoginServURL="CWUserLoginServlet";
 	
 	$.post(userLoginServURL,{username:userName, password:password},function(data){
-		$('#welcome_user').html(data);
-	});
+		
+		$.each(data, function(key, value){
+			
+			$('#welcome_user').html(value.userName);
+			$('#user_role').html(value.userRole);
+		});
+		
+	},'json');
 	
 	
 	

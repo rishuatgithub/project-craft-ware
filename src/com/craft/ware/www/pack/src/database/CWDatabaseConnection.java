@@ -7,6 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * MASTER Class to Handle the Database connectivity, closing the connection, executing PreparedStatement, etc.
+ * This class is called everytime an access on the database is required.
+ * @author Rishu
+ *
+ */
 public class CWDatabaseConnection {
 	
 	private static final String DB_HOST="localhost"; 
@@ -17,7 +23,7 @@ public class CWDatabaseConnection {
 	private static final String DB_DRIVER="org.postgresql.Driver";
 	private static Connection conn=null;	
 	private static ResultSet resultSet;
-	
+	private static PreparedStatement ps;
 	
 	/**
 	 * Connecting to the database
@@ -29,7 +35,8 @@ public class CWDatabaseConnection {
 		
 		try {
 			
-			Class.forName(DB_DRIVER);
+			Class.forName(DB_DRIVER).newInstance();
+			
 			final String url = "jdbc:postgresql://"+DB_HOST+":"+DB_PORT+"/"+DB_NAME;
 			final Properties props = new Properties();
 		
@@ -37,24 +44,41 @@ public class CWDatabaseConnection {
 			props.setProperty("password",DB_PASSWD);
 			
 			conn = DriverManager.getConnection(url, props);
-			
 	
-			return true;
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return false;
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
 		}
+		return true;
 		
 	}
 	
 
 	/**
-	 * Closing the Connection
+	 * Closing the Connection,result set , prepared statements
 	 */
 	public static void closeCWdbConnection(){
 		try {
-			conn.close();
+			if(ps!=null){
+				ps.close();
+			}
+			if(resultSet!=null){
+				resultSet.close();
+			}
+			if(conn!=null){
+				conn.close();
+			}	
+			
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -67,7 +91,7 @@ public class CWDatabaseConnection {
 	 */
 	public static ResultSet executePreparedStatement(String preparedStatementQuery){
 		
-		PreparedStatement ps;
+		
 		try {
 			ps = conn.prepareStatement(preparedStatementQuery);
 			
@@ -87,7 +111,6 @@ public class CWDatabaseConnection {
 		
 		return getResultSet();
 	}
-
 
 	public static ResultSet getResultSet() {
 		return resultSet;
