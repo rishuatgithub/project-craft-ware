@@ -41,24 +41,47 @@ Item Display Section
 
 
 $('#login').click(function(){
-	
+
 	var userName=$('#username').val();
 	var password=$('#password').val();
 	var userLoginServURL="CWUserLoginServlet";
 	
+	/* Calling the servlet to get the Login User*/
 	$.post(userLoginServURL,{username:userName, password:password},function(data){
 		
 		$.each(data, function(key, value){
 			
 			$('#welcome_user').html(value.userName);
 			$('#user_role').html(value.userRole);
+			
+			if(value.userRole!=null){
+				displayRoleList(value.userRole);
+			}
 		});
 		
 	},'json');
 	
-	
+	function displayRoleList(role){
+		
+		var userRoleServURL="CWUserRoleServlet";
+		var rolelist=null;
+		
+		$.get(userRoleServURL,{userRole:role},function(data){
+			$.each(data, function(key, value){
+				
+				rolelist+="<span id=\""+value.spanid+"\"><a href=\""+value.hyperlink+"\">"+value.tabenable+"</a></span><br/>";
+				
+			});
+			
+			$('.tab_access_display').html(rolelist);
+		});
+		
+	}
 	
 });
+
+
+
 
 </script>
 

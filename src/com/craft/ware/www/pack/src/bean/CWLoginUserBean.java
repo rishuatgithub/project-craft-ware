@@ -9,9 +9,8 @@ public class CWLoginUserBean {
 	
 	private String userID;
 	private String userPasscode;
-	private int userLoginCount;
-	private String userRole;
-	private String userName;
+	
+	private String getUserLoginQuery;
 	
 	public String getUserPasscode() {
 		return userPasscode;
@@ -35,28 +34,5 @@ public class CWLoginUserBean {
 		
 		this.getUserLoginQuery = getUserLoginQuery;
 	}
-
-	public int getUserLoginCount() {
-		return userLoginCount;
-	}
-	public void setUserLoginCount(int userLoginCount) {
-		this.userLoginCount = userLoginCount;
-	}
-
-	public String getUserRole() {
-		return userRole;
-	}
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-	private String getUserLoginQuery;
 
 }

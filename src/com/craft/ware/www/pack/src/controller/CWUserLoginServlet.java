@@ -1,7 +1,6 @@
 package com.craft.ware.www.pack.src.controller;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -10,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import com.craft.ware.www.pack.src.bean.CWLoginUserBean;
+import com.craft.ware.www.pack.src.bean.resultsethandle.CWLoginUserBeanRS;
 import com.craft.ware.www.pack.src.database.CWDatabaseConnection;
 
 
@@ -43,8 +42,8 @@ public class CWUserLoginServlet extends HttpServlet {
 				
 			
 		CWLoginUserBean loginuserBean=new CWLoginUserBean();
-		JSONObject jsonobj=null;
-		JSONArray jsonarr=null;
+		CWLoginUserBeanRS loginuserBeanRS=new CWLoginUserBeanRS();
+		
 		
 		loginuserBean.setUserID(request.getParameter("username"));
 		loginuserBean.setUserPasscode(request.getParameter("password"));
@@ -58,31 +57,11 @@ public class CWUserLoginServlet extends HttpServlet {
 				
 				loginuserBean.setGetUserLoginQuery(loginuserBean.getUserID(), loginuserBean.getUserPasscode());
 				
-				ResultSet rs=CWDatabaseConnection.executePreparedStatement(loginuserBean.getGetUserLoginQuery());
+						
+				loginuserBeanRS.setResultset(CWDatabaseConnection.executePreparedStatement(loginuserBean.getGetUserLoginQuery()));
 				
-				jsonobj=new JSONObject();
-				jsonarr=new JSONArray();
 				
-				while(rs.next()){
-					
-					if(rs.getInt(1)!=0){
-						loginuserBean.setUserLoginCount(rs.getInt(1));
-					}
-					if(rs.getString(2)!=null){
-						loginuserBean.setUserName(rs.getString(2));
-					}
-					if(rs.getString(3)!=null){
-						loginuserBean.setUserRole(rs.getString(3));
-					}
-					
-					jsonobj.put("userLoginCount",loginuserBean.getUserLoginCount());
-					jsonobj.put("userName", loginuserBean.getUserName());
-					jsonobj.put("userRole",loginuserBean.getUserRole());
-					
-				}
-				
-				jsonarr.put(jsonobj);
-				
+				JSONArray jsonarr=loginuserBeanRS.assignLoginUserBeanRS(loginuserBeanRS.getResultset());
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
