@@ -14,6 +14,14 @@
     <servlet-name>CWUserLoginServlet</servlet-name>
     <url-pattern>/CWUserLoginServlet</url-pattern>
   </servlet-mapping>
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>CWUserRoleServlet</display-name>
+    <servlet-name>CWUserRoleServlet</servlet-name>
+    <servlet-class>com.craft.ware.www.pack.src.controller.CWUserRoleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CWUserRoleServlet</servlet-name>
+    <url-pattern>/CWUserRoleServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
