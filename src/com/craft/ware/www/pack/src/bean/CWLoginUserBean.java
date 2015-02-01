@@ -8,8 +8,7 @@ package com.craft.ware.www.pack.src.bean;
 public class CWLoginUserBean {
 	
 	private String userID;
-	private String userPasscode;
-	
+	private String userPasscode;	
 	private String getUserLoginQuery;
 	
 	public String getUserPasscode() {

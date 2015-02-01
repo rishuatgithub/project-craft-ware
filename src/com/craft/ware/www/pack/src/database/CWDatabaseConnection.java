@@ -14,7 +14,7 @@ import java.util.Properties;
  *
  */
 public class CWDatabaseConnection {
-	
+		
 	private static final String DB_HOST="localhost"; 
 	private static final String DB_PORT="5433";
 	private static final String DB_NAME="postgres";

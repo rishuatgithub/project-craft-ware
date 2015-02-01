@@ -58,7 +58,7 @@ public class CWLoginUserBeanRS {
 		}
 		
 		jsonarr.put(jsonobj);
-				
+		
 		return jsonarr;	
 		
 	}

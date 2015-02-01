@@ -54,12 +54,9 @@ public class CWUserLoginServlet extends HttpServlet {
 			
 			if(getConnect){
 							
-				
 				loginuserBean.setGetUserLoginQuery(loginuserBean.getUserID(), loginuserBean.getUserPasscode());
-				
-						
+										
 				loginuserBeanRS.setResultset(CWDatabaseConnection.executePreparedStatement(loginuserBean.getGetUserLoginQuery()));
-				
 				
 				JSONArray jsonarr=loginuserBeanRS.assignLoginUserBeanRS(loginuserBeanRS.getResultset());
 				
