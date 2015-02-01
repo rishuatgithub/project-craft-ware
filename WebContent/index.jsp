@@ -17,7 +17,7 @@ User Login:<br/>
 User Name: <input type="text" name="name" id="username"/>
 Password : <input type="password" name="password" id="password"/>
 <input type="button" name="login" value="Login" id="login"/>
-<a href="#">sign up</a>
+<a href="#">sign up</a> <a href="#">Logout</a>
 
 <hr>
 Welcome: <span id="welcome_user"></span> <br/>
@@ -64,16 +64,14 @@ $('#login').click(function(){
 	function displayRoleList(role){
 		
 		var userRoleServURL="CWUserRoleServlet";
-		var rolelist=null;
+		$('.tab_access_display').empty();
 		
 		$.get(userRoleServURL,{userRole:role},function(data){
 			$.each(data, function(key, value){
 				
-				rolelist+="<span id=\""+value.spanid+"\"><a href=\""+value.hyperlink+"\">"+value.tabenable+"</a></span><br/>";
-				
+				$('.tab_access_display').append("<span id=\""+value.spanid+"\"><a href=\""+value.hyperlink+"\">"+value.tabenable+"</a></span><br/>");
 			});
 			
-			$('.tab_access_display').html(rolelist);
 		});
 		
 	}

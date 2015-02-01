@@ -33,16 +33,14 @@ public class CWUserRoleServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		CWUserRoleBean userrolebean=new CWUserRoleBean();
 		CWUserRoleBeanRS userrolebeanrs=new CWUserRoleBeanRS();
 		
 		userrolebean.setUserrole(request.getParameter("userRole"));
-		
-		System.out.println(userrolebean.getUserrole());
-		
+				
 		try {
 			boolean getConnect=CWDatabaseConnection.getCWdbConnection();
-			
 			
 			if(getConnect){
 				
@@ -52,12 +50,10 @@ public class CWUserRoleServlet extends HttpServlet {
 				
 				JSONArray jsonarr=userrolebeanrs.assignUserRoleBeanRS(userrolebeanrs.getRoleresultset());
 				
-				System.out.println(jsonarr);
-				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				
-				response.getWriter().write(jsonarr.toString());
+				response.getWriter().write(jsonarr.get(0).toString());
 				
 			}
 			

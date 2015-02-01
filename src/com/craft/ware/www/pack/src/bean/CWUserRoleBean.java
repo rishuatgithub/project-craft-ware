@@ -3,7 +3,6 @@ package com.craft.ware.www.pack.src.bean;
 public class CWUserRoleBean {
 
 	private String userrole;
-
 	private String getUserRoleQuery;
 	
 	public String getUserrole() {
