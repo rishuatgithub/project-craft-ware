@@ -34,4 +34,14 @@
     <servlet-name>CWUserSignUpServlet</servlet-name>
     <url-pattern>/CWUserSignUpServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CWProductListServlet</display-name>
+    <servlet-name>CWProductListServlet</servlet-name>
+    <servlet-class>com.craft.ware.www.pack.src.controller.CWProductListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CWProductListServlet</servlet-name>
+    <url-pattern>/CWProductListServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
