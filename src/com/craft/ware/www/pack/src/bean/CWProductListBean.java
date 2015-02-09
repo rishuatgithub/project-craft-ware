@@ -17,9 +17,8 @@ public class CWProductListBean {
 		return getproductlistquery;
 	}
 
-	public void setGetproductlistquery(String category) {
-		
-		String getproductlistquery="select * from craftware.cw_productlist('"+category+"')";
+	public void setGetproductlistquery() {
+		String getproductlistquery="select * from craftware.cw_productlist('"+this.categorychoosed+"')";
 		this.getproductlistquery = getproductlistquery;
 	}
 	

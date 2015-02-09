@@ -10,8 +10,12 @@
 <style>
 img { background-size:10px 10px;}
 li,ul {list-style: none; }
-#pchildul {border:0px solid red; width:100px; height:0px; margin:0px; padding-top:5px; position: relative;}
-#pparentul li{padding-top:3px;}
+#aulid{ border:1px solid #ecf0f1; margin-left:0px;  width:60%; float:left;}
+#aulid li{text-align:center; padding-bottom:10px;  margin-left:-50px;}
+#masterid{ border:0px solid green; width:30%; display:inline-block; padding:5px;}
+#u { border:0px solid yellow; }
+.categories li {display:inline-block;}
+
 </style>
 </head>
 <body>
@@ -33,13 +37,36 @@ Tab Access Display Section
 <div class="tab_access_display"></div>
 <hr>
 Categories
-<div class="categories"><ul><li><a href="#">HANDICRAFT</a></li><li><a href="#">WEARABLES</a></li></ul></div>
-<br>
+<div class="categories">
+	<ul>
+		<li><a href="#">HANDICRAFT</a></li>
+		<li> | </li>
+		<li><a href="#">WEARABLES</a></li></ul>
+	
+</div>
+
 <hr>
-Item Lists:
-<div class="products"></div>
+Item Lists: <br>
+<span id="categoryselected"></span> | 
+Filters : 
+<select id="filter">
+	<option value="F1">Featured</option>
+	<option value="F2">Price - High to Low</option>
+	<option value="F3">Price - Low to High</option>
+	<option value="F4">Popular</option>
+	<option value="F5">New Stocks</option>
+</select>
+
+<div class="products"><ul id="u">  </ul></div>
 
 <br>
+
+
+<hr>
+Recommendations:
+<br>
+<hr>
+Site Footer
 
 
 
@@ -57,11 +84,24 @@ $('#login').click(function(){
 	var userName=$('#username').val();
 	var password=$('#password').val();
 	var userLoginServURL="CWUserLoginServlet";
+	var error=null;
 	
+	if(!userName || !password){
+		error="All Fields are required";
+	}
+	
+	if(error){
+		alert(error);
+		return false;
+	}
+		
 	/* Calling the servlet to get the Login User*/
 	$.post(userLoginServURL,{username:userName, password:password},function(data){
 		
 		$.each(data, function(key, value){
+			if(value.userName==null){ 
+				error="Invalid User";
+			}
 			
 			$('#welcome_user').html(value.userName);
 			$('#user_role').html(value.userRole);
@@ -72,6 +112,7 @@ $('#login').click(function(){
 		});
 		
 	},'json');
+	
 	
 });
 
@@ -99,23 +140,27 @@ $(".categories ul li a").click(function(){
 function productList(prodcategory){
 	
 	var prodlistServURL="CWProductListServlet";
-	$(".products").empty();
+	$(".products #u").empty();
+	$("#categoryselected").html("Category Selected :"+prodcategory);
 	
-	$(".products").append("<ul id='pparentul'>");
 	$.getJSON(prodlistServURL,{productcategory:prodcategory},function(data){
 		
 		$.each(data, function(key, value){
 			
-			$(".products").append("<li><ul id='pchildul'>")
-			.append("<li>"+value.productname+" </li>")
-			.append("<li><img src='"+value.productimglink+"'/></li>")
-			.append("<li>"+value.productprice+" "+value.productcurrtype+" </li>")
-			.append("<li><a href='#' id='buy'>BUY</a></li>")
-			.append("</ul></li>");
+			$(".products #u").append(
+					"<li id=\"masterid\">"+					
+					"<ul id=\"aulid\">" + "<li>"+value.productname+" </li>" + 
+					"<li><img src=\""+value.productimglink+"\"/></li>" +	
+					"<li>"+value.productprice+" "+value.productcurrtype+" </li>"+
+					"<li><a href=\"#\" id=\"buy\">BUY | BAG | WISH</a></li></ul>"+
+					"</li>"
+			);
+			
 		});
 		
 	});
-	$(".products").append("</ul>");
+	
+	
 }
 $( window ).load(productList('ALL'));
 

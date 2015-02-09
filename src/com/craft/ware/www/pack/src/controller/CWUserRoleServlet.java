@@ -44,11 +44,11 @@ public class CWUserRoleServlet extends HttpServlet {
 			
 			if(getConnect){
 				
-				userrolebean.setGetUserRoleQuery(userrolebean.getUserrole());
+				userrolebean.setGetUserRoleQuery();
 				
 				userrolebeanrs.setRoleresultset(CWDatabaseConnection.executePreparedStatement(userrolebean.getGetUserRoleQuery()));
 				
-				JSONArray jsonarr=userrolebeanrs.assignUserRoleBeanRS(userrolebeanrs.getRoleresultset());
+				JSONArray jsonarr=userrolebeanrs.assignUserRoleBeanRS();
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
@@ -57,7 +57,7 @@ public class CWUserRoleServlet extends HttpServlet {
 				
 			}
 			
-			CWDatabaseConnection.closeCWdbConnection();
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

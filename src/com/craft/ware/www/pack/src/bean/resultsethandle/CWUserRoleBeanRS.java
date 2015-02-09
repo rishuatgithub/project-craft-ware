@@ -46,12 +46,14 @@ public class CWUserRoleBeanRS {
 	JSONObject jsonobj=null;
 	
 	
-	public JSONArray assignUserRoleBeanRS(ResultSet r){
+	public JSONArray assignUserRoleBeanRS(){
 		
 		jsonarr=new JSONArray();
 		jsonobj=new JSONObject();
 		List<JSONObject> jobjlist=new ArrayList<JSONObject>();
 			
+		ResultSet r=this.roleresultset;
+		
 		try {
 			while(r.next()){
 				

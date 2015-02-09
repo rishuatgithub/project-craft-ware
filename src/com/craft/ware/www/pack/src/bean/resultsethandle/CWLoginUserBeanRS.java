@@ -2,6 +2,8 @@ package com.craft.ware.www.pack.src.bean.resultsethandle;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,11 +28,13 @@ public class CWLoginUserBeanRS {
 	}
 	
 	
-	public JSONArray assignLoginUserBeanRS(ResultSet r){
+	public JSONArray assignLoginUserBeanRS(){
 		
 		jsonarr=new JSONArray();
 		jsonobj=new JSONObject();
+		List<JSONObject> jobjlist=new ArrayList<JSONObject>();
 		
+		ResultSet r=this.resultset;
 		try {
 			while(r.next()){
 				
@@ -48,6 +52,9 @@ public class CWLoginUserBeanRS {
 				jsonobj.put("userName", getUserName());
 				jsonobj.put("userRole",getUserRole());
 				
+				jobjlist.add(jsonobj);
+				
+				jsonobj=new JSONObject();
 			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -57,7 +64,7 @@ public class CWLoginUserBeanRS {
 			e.printStackTrace();
 		}
 		
-		jsonarr.put(jsonobj);
+		jsonarr.put(jobjlist);
 		
 		return jsonarr;	
 		

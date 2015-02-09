@@ -36,9 +36,9 @@ public class CWSignUpUserBean {
 	public String getGetUserNameCheckQuery() {
 		return getUserNameCheckQuery;
 	}
-	public void setGetUserNameCheckQuery(String nwuser) {
+	public void setGetUserNameCheckQuery() {
 		
-		String getUserNameCheckQuery="select * from craftware.cw_nwusernamecheck('"+nwuser+"')";
+		String getUserNameCheckQuery="select * from craftware.cw_nwusernamecheck('"+this.newUserName+"')";
 		this.getUserNameCheckQuery = getUserNameCheckQuery;
 	}
 	
@@ -50,9 +50,9 @@ public class CWSignUpUserBean {
 	public String getGetNewUserSignUpQuery() {
 		return getNewUserSignUpQuery;
 	}
-	public void setGetNewUserSignUpQuery(String name,String mail, String pass) {
+	public void setGetNewUserSignUpQuery() {
 		
-		String getNewUserSignUpQuery="select * from craftware.cw_nwusersignup('"+name+"','"+mail+"','"+pass+"')";
+		String getNewUserSignUpQuery="select * from craftware.cw_nwusersignup('"+this.newUserName+"','"+this.newUserEmail+"','"+this.newUserPasswd+"')";
 		
 		this.getNewUserSignUpQuery = getNewUserSignUpQuery;
 	}
