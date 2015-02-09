@@ -26,11 +26,12 @@ public class CWSignUpUserBeanRS {
 	
 	
 	
-	public JSONArray fetchsignup(ResultSet r){
+	public JSONArray fetchsignup(){
 		
 		jsonarr=new JSONArray();
 		jsonobj=new JSONObject();
 		List<JSONObject> jobjlist=new ArrayList<JSONObject>();
+		ResultSet r=this.signupresultset;
 		
 		try {
 			while(r.next()){

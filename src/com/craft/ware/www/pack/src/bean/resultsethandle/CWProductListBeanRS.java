@@ -20,11 +20,13 @@ public class CWProductListBeanRS {
 	JSONArray jsonarr=null;
 	JSONObject jsonobj=null;
 	
-	public JSONArray fetchProductList(ResultSet r){
+	public JSONArray fetchProductList(){
 		
 		jsonarr=new JSONArray();
 		jsonobj=new JSONObject();
 		List<JSONObject> jobjlist=new ArrayList<JSONObject>();
+		
+		ResultSet r=this.prodlistrs;
 		
 		try {
 			while(r.next()){

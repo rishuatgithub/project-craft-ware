@@ -54,10 +54,10 @@ public class CWUserSignUpServlet extends HttpServlet {
 				/*
 				 * Checking For User Name
 				 */
-				signupobj.setGetUserNameCheckQuery(signupobj.getNewUserName());
+				signupobj.setGetUserNameCheckQuery();
 				
 				signuprsobj.setSignupresultset(CWDatabaseConnection.executePreparedStatement(signupobj.getGetUserNameCheckQuery()));
-				JSONArray jsonarr=signuprsobj.fetchsignup(signuprsobj.getSignupresultset());
+				JSONArray jsonarr=signuprsobj.fetchsignup();
 				
 				
 				if(signuprsobj.getSignupcount()==0){
@@ -65,10 +65,10 @@ public class CWUserSignUpServlet extends HttpServlet {
 					/*
 					 * Inserting user to the database
 					 */
-					signupobj.setGetNewUserSignUpQuery(signupobj.getNewUserName(), signupobj.getNewUserEmail(), signupobj.getNewUserPasswd());
+					signupobj.setGetNewUserSignUpQuery();
 					
 					signuprsobj.setSignupresultset(CWDatabaseConnection.executePreparedStatement(signupobj.getGetNewUserSignUpQuery()));
-					JSONArray jsonarrnwuser=signuprsobj.fetchsignup(signuprsobj.getSignupresultset());
+					JSONArray jsonarrnwuser=signuprsobj.fetchsignup();
 					
 					
 					response.getWriter().write(jsonarrnwuser.get(0).toString());

@@ -27,9 +27,9 @@ public class CWLoginUserBean {
 	public String getGetUserLoginQuery() {
 		return getUserLoginQuery;
 	}
-	public void setGetUserLoginQuery(String getUserID, String getUserPass) {
-		
-		String getUserLoginQuery="select * from craftware.cw_usercredential_check('"+getUserID+"','"+getUserPass+"')";
+	public void setGetUserLoginQuery() {
+				
+		String getUserLoginQuery="select * from craftware.cw_usercredential_check('"+this.userID+"','"+this.userPasscode+"')";
 		
 		this.getUserLoginQuery = getUserLoginQuery;
 	}

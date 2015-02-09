@@ -44,11 +44,11 @@ public class CWProductListServlet extends HttpServlet {
 			
 			if(getConnect){
 				
-				prodlstobj.setGetproductlistquery(prodlstobj.getCategorychoosed());
+				prodlstobj.setGetproductlistquery();
 				
 				prodlstrsobj.setProdlistrs(CWDatabaseConnection.executePreparedStatement(prodlstobj.getGetproductlistquery()));
 				
-				JSONArray jsonarr=prodlstrsobj.fetchProductList(prodlstrsobj.getProdlistrs());
+				JSONArray jsonarr=prodlstrsobj.fetchProductList();
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");

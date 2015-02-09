@@ -17,9 +17,9 @@ public class CWUserRoleBean {
 		return getUserRoleQuery;
 	}
 
-	public void setGetUserRoleQuery(String role) {
+	public void setGetUserRoleQuery() {
 		
-		String getUserRoleQuery="select * from  craftware.cw_userrolelist('"+role+"')";
+		String getUserRoleQuery="select * from  craftware.cw_userrolelist('"+this.userrole+"')";
 		
 		this.getUserRoleQuery = getUserRoleQuery;
 	}

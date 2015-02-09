@@ -54,20 +54,20 @@ public class CWUserLoginServlet extends HttpServlet {
 			
 			if(getConnect){
 							
-				loginuserBean.setGetUserLoginQuery(loginuserBean.getUserID(), loginuserBean.getUserPasscode());
+				loginuserBean.setGetUserLoginQuery();
 										
 				loginuserBeanRS.setResultset(CWDatabaseConnection.executePreparedStatement(loginuserBean.getGetUserLoginQuery()));
 				
-				JSONArray jsonarr=loginuserBeanRS.assignLoginUserBeanRS(loginuserBeanRS.getResultset());
+				JSONArray jsonarr=loginuserBeanRS.assignLoginUserBeanRS();
 				
 				response.setContentType("application/json");
 				response.setCharacterEncoding("UTF-8");
 				
-				response.getWriter().write(jsonarr.toString());
+				response.getWriter().write(jsonarr.get(0).toString());
 				
 			}
 			
-			CWDatabaseConnection.closeCWdbConnection();
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
