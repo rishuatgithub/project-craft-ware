@@ -17,6 +17,10 @@ li,ul {list-style: none; }
 .categories li {display:inline-block;}
 
 </style>
+
+<script>
+
+</script>
 </head>
 <body>
 <h1>Welcome to Craft-Ware | A exclusive warehouse of Handicrafts</h1>
@@ -41,8 +45,8 @@ Categories
 	<ul>
 		<li><a href="#">HANDICRAFT</a></li>
 		<li> | </li>
-		<li><a href="#">WEARABLES</a></li></ul>
-	
+		<li><a href="#">WEARABLES</a></li>
+	</ul>	
 </div>
 
 <hr>
@@ -77,7 +81,7 @@ Site Footer
 <script>
 
 $(function(){
-	
+
 
 $('#login').click(function(){
 
@@ -137,6 +141,8 @@ $(".categories ul li a").click(function(){
 	
 });
 
+
+
 function productList(prodcategory){
 	
 	var prodlistServURL="CWProductListServlet";
@@ -149,24 +155,30 @@ function productList(prodcategory){
 			
 			$(".products #u").append(
 					"<li id=\"masterid\">"+					
-					"<ul id=\"aulid\">" + "<li>"+value.productname+" </li>" + 
+					"<ul id=\"aulid\">" + 
+					"<li>"+value.productname+" </li>" + 
 					"<li><img src=\""+value.productimglink+"\"/></li>" +	
 					"<li>"+value.productprice+" "+value.productcurrtype+" </li>"+
-					"<li><a href=\"#\" id=\"buy\">BUY | BAG | WISH</a></li></ul>"+
-					"</li>"
+					"<li><a href=\"#\" id=\"more\" onclick=\"moreprodetails('"+value.productid+"');\">MORE</a> | <a href=\"#\">BAG</a>"+
+					//"<li><input type=\"hidden\" name=\"pid\" value=\""+value.productid+"\" id=\"pid\"></input>"+
+					"</ul></li>"
 			);
 			
 		});
 		
 	});
 	
-	
+		
 }
-$( window ).load(productList('ALL'));
+$(window).load(productList('ALL'));
+
+
 
 });
 
-
+function moreprodetails(pid){
+	window.location.href="productdetails.jsp?pid="+pid;
+}
 
 
 </script>

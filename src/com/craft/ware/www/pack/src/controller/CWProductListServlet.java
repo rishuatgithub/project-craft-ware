@@ -60,7 +60,12 @@ public class CWProductListServlet extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			
+			
+			CWDatabaseConnection.closeCWdbConnection();
 		}
+		
 		
 	}
 
