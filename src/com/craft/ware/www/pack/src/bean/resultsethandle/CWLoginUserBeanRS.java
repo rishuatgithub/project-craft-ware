@@ -36,6 +36,7 @@ public class CWLoginUserBeanRS {
 		
 		ResultSet r=this.resultset;
 		try {
+			
 			while(r.next()){
 				
 				if(r.getInt(1)!=0){
@@ -56,6 +57,7 @@ public class CWLoginUserBeanRS {
 				
 				jsonobj=new JSONObject();
 			}
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
