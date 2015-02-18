@@ -37,7 +37,7 @@ public class CWProductDetailsServlet extends HttpServlet {
 		
 		CWProductDetailsBean pdetailbean=new CWProductDetailsBean();
 		CWProductDetailsBeanRS pdetailbeanRS=new CWProductDetailsBeanRS();
-		
+				
 		pdetailbean.setPid(request.getParameter("productid"));
 		
 		try {

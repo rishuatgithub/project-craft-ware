@@ -54,4 +54,17 @@
     <servlet-name>CWProductDetailsServlet</servlet-name>
     <url-pattern>/CWProductDetailsServlet</url-pattern>
   </servlet-mapping>
+  
+<!--  adding security constraint to work with SSL/TLS or HTTPS -->
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>project-craft-ware</web-resource-name>
+        <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+        <!-- add CONFIDENTIAL for enabling SSL. To turn off SSL , change it to NONE -->
+        <transport-guarantee>NONE</transport-guarantee>        
+    </user-data-constraint>
+</security-constraint>
+
 </web-app>
